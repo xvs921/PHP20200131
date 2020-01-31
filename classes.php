@@ -62,6 +62,11 @@ class Adatbazis{
         $this->sql = "DELETE FROM hangszer WHERE id=" . $id;
         $this->conn->query($this->sql);
     }
+		public function update($id,$ar,$tipus,$marka,$gyartasiIdo)
+	{
+		$this->sql = "Update hangszer SET ar=".$ar.",  tipus =". $tipus.", marka=".$marka.", gyartasiIdo=".$gyartasiIdo.", WHERE id=" . $id;
+        $this->conn->query($this->sql);
+	}
     
 	public function kapcsolatbontas() {
 		$this->conn->close();	
