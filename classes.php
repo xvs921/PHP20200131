@@ -33,7 +33,7 @@ class Adatbazis{
                         VALUES ('".$_GET["input_ar"]."',
                                 '".$_GET["input_tipus"]."',
                                 '".$_GET["input_marka"]."',
-                                ".$_GET["gyartasiIdo"].")";
+                                '".$_GET["input_gyartasiIdo"]."')";
         $this->conn->query($this->sql);
     }
 	
