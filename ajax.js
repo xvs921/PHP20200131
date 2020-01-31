@@ -49,6 +49,21 @@ function torles(id) {
   	xhttp.send();
 }
 
+function adatok(id) {
+	adatok_url = ""
+	adatok_url += "?input_id=" + id;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("tartalom").innerHTML =
+			this.responseText;
+	  }
+	};
+	xhttp.open("GET", "adatok.php" + upd_url, true);
+	xhttp.send();
+}
+
 function update(id) {
 	upd_url = ""
 	upd_url += "?input_id=" + id;

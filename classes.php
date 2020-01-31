@@ -33,7 +33,7 @@ class Adatbazis{
                         VALUES ('".$_GET["input_ar"]."',
                                 '".$_GET["input_tipus"]."',
                                 '".$_GET["input_marka"]."',
-                                ".$_GET["gyartasiIdo"].")";
+                                '".$_GET["input_gyartasiIdo"]."')";
         $this->conn->query($this->sql);
     }
 	
@@ -62,7 +62,7 @@ class Adatbazis{
                     </td>
                     <td>
                 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick=adatok(id)>
   Módosítás
 </button>
 
@@ -97,12 +97,18 @@ class Adatbazis{
             <tr><td colspan="5">Nincs még rögzített felhasználó</td></tr> <?php
         } ?>
         </table> <?php
-	}
+    }
     
     public function delete($id) {
         $this->sql = "DELETE FROM hangszer WHERE id=" . $id;
         $this->conn->query($this->sql);
     }
+
+    public function adatok($id) {
+        $this->sql = "SELECT * FROM hangszer WHERE id=".$id;
+        $this->conn->query($this->sql);
+    }
+
     public function update($id)
 	{
         $this->sql = "UPDATE hangszer SET ar='".$_GET["input_ar"]."', tipus='".$_GET["input_tipus"]."', marka='".$_GET["input_marka"]."', gyartasiIdo='".$_GET["input_gyartasiIdo"]."'
