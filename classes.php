@@ -1,14 +1,6 @@
-<html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-</html>
 <?php
 class Adatbazis{
-	public $servername = "localhost:3307";
+	public $servername = "localhost:3306";
 	public $username = "root";
 	public $password = "";
 	public $dbname = "hangszerek";
@@ -33,7 +25,7 @@ class Adatbazis{
                         VALUES ('".$_GET["input_ar"]."',
                                 '".$_GET["input_tipus"]."',
                                 '".$_GET["input_marka"]."',
-                                '".$_GET["input_gyartasiIdo"]."')";
+                                ".$_GET["gyartasiIdo"].")";
         $this->conn->query($this->sql);
     }
 	
@@ -41,13 +33,12 @@ class Adatbazis{
         $this->sql = "SELECT * FROM hangszer";
 		$this->result = $this->conn->query($this->sql); ?>
 
-        <table class="table table-hover">
+        <table>
         <tr>
             <th>Ár</th>
             <th>Típus</th>
             <th>Márka</th>
             <th>Gyártási idő</th>
-            <th>Törlés</th>
         </tr> <?php
 		if ($this->result->num_rows > 0) {
 			while($this->row = $this->result->fetch_assoc()) { ?>
